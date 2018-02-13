@@ -1,0 +1,9 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item android:title="@string/delete_match" app:showAsAction="never"
+        android:id="@+id/user_menu_delete_match"/>
+
+    <item android:title="@string/mute_notifications" app:showAsAction="never"
+        android:id="@+id/user_menu_mute_notifications"/>
+</menu>

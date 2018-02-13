@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin">
+
+    <!--<TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:hint="@string/name"
+        android:textSize="20dp"
+        android:textStyle="bold"/>
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Type the name"
+        android:id="@+id/user_name_settings"
+        android:background="@android:color/transparent"
+        android:paddingBottom="10dp"/>-->
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/age"
+        android:textSize="20dp"
+        android:textStyle="bold"/>
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Type the age"
+        android:id="@+id/user_age_settings"
+        android:background="@android:color/transparent"
+        android:inputType="number"
+        android:paddingBottom="10dp"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/sex"
+        android:textSize="20dp"
+        android:textStyle="bold"/>
+
+    <Spinner
+        android:id="@+id/user_sex_settings"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:entries="@array/sex_array"
+        android:paddingBottom="10dp"/>
+        <!--android:prompt="@string/sex_prompt"-->
+
+    <Switch
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/mute_notifications"
+        android:id="@+id/search_switch_notifications"
+        android:textSize="20dp"
+        android:textStyle="bold"
+        android:textColor="@android:color/tab_indicator_text"
+        android:paddingBottom="10dp"/>
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/photo"
+            android:text="@string/photo"
+            android:textSize="20dp"
+            android:textStyle="bold"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:hint="@string/touch_picture"
+            android:layout_alignParentRight="true"
+            android:layout_alignBottom="@+id/photo"
+            android:id="@+id/save_settings"/>
+
+    </RelativeLayout>
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/user_picture_settings"
+        android:src="@drawable/ic_no_person"
+        android:onClick="uploadPicture"
+        android:adjustViewBounds="true"
+        android:scaleType="centerCrop"/>
+
+</LinearLayout>

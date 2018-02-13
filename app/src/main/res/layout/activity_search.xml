@@ -1,0 +1,238 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fillViewport="true">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:orientation="vertical"
+        android:background="@color/grey">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="@dimen/activity_vertical_margin"
+            android:layout_margin="@dimen/activity_vertical_margin"
+            android:elevation="0dp"
+            android:background="@drawable/shape_for_search_activity">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="20dp"
+                    android:textStyle="bold"
+                    android:text="@string/search_distance"
+                    android:id="@+id/simple_textview_distance"
+                    android:padding="@dimen/activity_vertical_margin"
+                    android:layout_alignParentLeft="true"
+                    android:gravity="bottom"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:padding="@dimen/activity_vertical_margin"
+                    android:textSize="20dp"
+                    android:textStyle="bold"
+                    android:textColor="@color/colorAccent"
+                    android:text="50"
+                    android:layout_alignParentRight="true"
+                    android:gravity="bottom"
+                    android:id="@+id/search_distance_text_view"/>
+            </RelativeLayout>
+
+            <SeekBar
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/search_distance_seek_bar"
+                android:thumb="@drawable/thumb_shape"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="@dimen/activity_vertical_margin"
+            android:layout_margin="@dimen/activity_vertical_margin"
+            android:elevation="0dp"
+            android:background="@drawable/shape_for_search_activity">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="20dp"
+                android:textStyle="bold"
+                android:text="@string/search_age"
+                android:id="@+id/simple_textview_age"
+                android:padding="@dimen/activity_vertical_margin"
+                android:layout_alignParentLeft="true"
+                android:gravity="bottom"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_weight="0.25"
+                    android:layout_height="match_parent"
+                    android:text="@string/search_min"
+                    android:padding="@dimen/activity_vertical_margin"
+                    android:gravity="center_vertical|center_horizontal"/>
+
+                <NumberPicker
+                    android:layout_width="0dp"
+                    android:layout_weight="0.25"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/search_number_min"
+                    android:descendantFocusability="blocksDescendants"/>
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_weight="0.25"
+                    android:layout_height="match_parent"
+                    android:text="@string/search_max"
+                    android:padding="@dimen/activity_vertical_margin"
+                    android:gravity="center_vertical|center_horizontal"/>
+
+                <NumberPicker
+                    android:layout_width="0dp"
+                    android:layout_weight="0.25"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/search_number_max"
+                    android:descendantFocusability="blocksDescendants"/>
+
+            </LinearLayout>
+
+            <!--<com.yahoo.mobile.client.android.util.rangeseekbar.RangeSeekBar
+                android:id="@+id/rangeSeekbar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:singleThumb="false"/>-->
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="@dimen/activity_vertical_margin"
+            android:layout_margin="@dimen/activity_vertical_margin"
+            android:elevation="0dp"
+            android:background="@drawable/shape_for_search_activity">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="20dp"
+                android:textStyle="bold"
+                android:text="@string/search_sex"
+                android:id="@+id/simple_textview_sex"
+                android:padding="@dimen/activity_vertical_margin"
+                android:layout_alignParentLeft="true"
+                android:gravity="bottom"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <CheckedTextView
+                    android:layout_width="0dp"
+                    android:layout_weight="0.5"
+                    android:id="@+id/search_female"
+                    android:layout_height="wrap_content"
+                    android:text="@string/search_female"
+                    android:padding="@dimen/activity_vertical_margin"
+                    android:gravity="center_horizontal"
+                    android:checkMark="?android:attr/listChoiceIndicatorMultiple"
+                    android:checked="true"
+                    android:clickable="true"/>
+
+                <CheckedTextView
+                    android:layout_width="0dp"
+                    android:layout_weight="0.5"
+                    android:id="@+id/search_male"
+                    android:layout_height="wrap_content"
+                    android:text="@string/search_male"
+                    android:padding="@dimen/activity_vertical_margin"
+                    android:gravity="center_horizontal"
+                    android:checkMark="?android:attr/listChoiceIndicatorMultiple"
+                    android:checked="false"
+                    android:clickable="true"/>
+            </LinearLayout>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="@dimen/activity_vertical_margin"
+            android:layout_margin="@dimen/activity_vertical_margin"
+            android:elevation="0dp"
+            android:background="@drawable/shape_for_search_activity">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="20dp"
+                android:textStyle="bold"
+                android:text="@string/search_distance_in"
+                android:id="@+id/simple_textview_distance_in"
+                android:padding="@dimen/activity_vertical_margin"
+                android:layout_alignParentLeft="true"
+                android:gravity="bottom"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_weight="0.5"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/search_km"
+                    android:text="@string/search_km"
+                    android:padding="@dimen/activity_vertical_margin"
+                    android:gravity="center_horizontal"
+                    android:clickable="true"
+                    android:background="@drawable/shape_for_km_mi"/>
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_weight="0.5"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/search_mi"
+                    android:text="@string/search_mi"
+                    android:padding="@dimen/activity_vertical_margin"
+                    android:gravity="center_horizontal"
+                    android:clickable="true"/>
+            </LinearLayout>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="@dimen/activity_vertical_margin"
+            android:layout_margin="@dimen/activity_vertical_margin"
+            android:elevation="0dp"
+            android:background="@drawable/shape_for_search_activity"
+            android:visibility="gone">
+
+            <Switch
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/mute_notifications"
+                android:id="@+id/search_switch_notifications"
+                android:textSize="20dp"
+                android:textStyle="bold"/>
+        </LinearLayout>
+
+    </LinearLayout>
+</ScrollView>
