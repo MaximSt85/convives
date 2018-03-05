@@ -30,6 +30,8 @@ import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+
 import java.text.DateFormat;
 import java.util.ArrayList;
 import java.util.Date;
@@ -205,6 +207,26 @@ public class ChatActivity extends AppCompatActivity {
                             }
                         }
                     });
+
+                    mDatabase.child("users").child(userId1).child("newMessage").child(userId2).addListenerForSingleValueEvent(new ValueEventListener() {
+                        @Override
+                        public void onDataChange(DataSnapshot dataSnapshot) {
+                            int newMessages;
+                            try {
+                                newMessages = Integer.parseInt(String.valueOf(dataSnapshot.getValue()));
+                            }
+                            catch (Exception e) {
+                                newMessages = 0;
+                            }
+                            newMessages += 1;
+                            mDatabase.child("users").child(userId1).child("newMessage").child(userId2).setValue(newMessages);
+                        }
+
+                        @Override
+                        public void onCancelled(DatabaseError databaseError) {
+
+                        }
+                    });
                 }
 
                 input.setText("");
@@ -281,7 +303,9 @@ public class ChatActivity extends AppCompatActivity {
         isChatActivityActive = false;
         OnlineStatus myOnlineStatus = new OnlineStatus(this);
         myOnlineStatus.makeOffline();
-        mDatabase.child("users").child(userId2).child("newMessage").setValue(0);
+        //mDatabase.child("users").child(userId2).child("newMessage").setValue(0);
+        //mDatabase.child("users").child(userId2).child("newMessage").child(userId1).setValue(0);
+        mDatabase.child("users").child(userId2).child("newMessage").child(userId1).removeValue();
 
         /*if (WriteToFirebaseJobIntentService.running) {
             WriteToFirebaseJobIntentService.restart = true;

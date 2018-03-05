@@ -192,7 +192,8 @@ public class UsersActivity extends AppCompatActivity implements UsersAdapter.Use
                     }
                     int newMessage;
                     try {
-                        newMessage = Integer.parseInt(String.valueOf(userDataSnapshot.child("newMessage").getValue()));
+                        //newMessage = Integer.parseInt(String.valueOf(userDataSnapshot.child("newMessage").getValue()));
+                        newMessage = Integer.parseInt(String.valueOf(userDataSnapshot.child("newMessage").child(currentUserId).getValue()));
                     }
                     catch (Exception e) {
                         newMessage = 0;
@@ -448,8 +449,8 @@ public class UsersActivity extends AppCompatActivity implements UsersAdapter.Use
 
     @Override
     public void onConnected(@Nullable Bundle bundle) {
-        myOnLocationChanged();
-        //LocationServices.FusedLocationApi.requestLocationUpdates(mGoogleApiClient, mLocationRequest, this);
+        //myOnLocationChanged();
+        LocationServices.FusedLocationApi.requestLocationUpdates(mGoogleApiClient, mLocationRequest, this);
     }
 
     @Override
