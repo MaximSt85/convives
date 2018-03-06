@@ -451,8 +451,8 @@ public class UsersActivity extends AppCompatActivity implements UsersAdapter.Use
 
     @Override
     public void onConnected(@Nullable Bundle bundle) {
-        myOnLocationChanged();
-        //LocationServices.FusedLocationApi.requestLocationUpdates(mGoogleApiClient, mLocationRequest, this);
+        //myOnLocationChanged();
+        LocationServices.FusedLocationApi.requestLocationUpdates(mGoogleApiClient, mLocationRequest, this);
     }
 
     @Override
