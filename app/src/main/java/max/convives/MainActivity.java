@@ -260,20 +260,26 @@ public class MainActivity extends AppCompatActivity implements DatabaseIntentSer
                 email = email.replaceAll("\\s+","");
                 String password = passwordEditText.getText().toString();
                 password = password.replaceAll("\\s+","");
-                AuthCredential credential = EmailAuthProvider.getCredential(email, password);
-                currentUserAuth.reauthenticate(credential).addOnCompleteListener(new OnCompleteListener<Void>() {
-                    @Override
-                    public void onComplete(@NonNull Task<Void> task) {
-                        if (task.isSuccessful()) {
-                            //deleteFromFirebase();
-                            deleteAllChats();
+                if (!email.equals("") && !password.equals("")) {
+                    AuthCredential credential = EmailAuthProvider.getCredential(email, password);
+                    currentUserAuth.reauthenticate(credential).addOnCompleteListener(new OnCompleteListener<Void>() {
+                        @Override
+                        public void onComplete(@NonNull Task<Void> task) {
+                            if (task.isSuccessful()) {
+                                //deleteFromFirebase();
+                                deleteAllChats();
+                            }
+                            else {
+                                MApplication.makeToast(getResources().getString(R.string.invalid_email_password), MainActivity.this);
+                                progressDialog.dismiss();
+                            }
                         }
-                        else {
-                            MApplication.makeToast(getResources().getString(R.string.invalid_email_password), MainActivity.this);
-                            progressDialog.dismiss();
-                        }
-                    }
-                });
+                    });
+                }
+                else {
+                    MApplication.makeToast(getResources().getString(R.string.invalid_email_password), MainActivity.this);
+                    progressDialog.dismiss();
+                }
                 dialog.dismiss();
             }
         });
