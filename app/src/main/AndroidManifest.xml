@@ -18,8 +18,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
-        android:name=".MApplication">
-        <activity android:name=".MainActivity">
+        android:name="max.convives.MApplication">
+        <activity android:name="max.convives.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -27,38 +27,36 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".UsersActivity"
-            android:parentActivityName=".MainActivity" />
+            android:name="max.convives.UsersActivity"
+            android:parentActivityName="max.convives.MainActivity" />
         <activity
-            android:name=".ChatActivity"
+            android:name="max.convives.ChatActivity"
             android:launchMode="singleTop"
-            android:parentActivityName=".UsersActivity"
+            android:parentActivityName="max.convives.UsersActivity"
             android:theme="@style/AppTheme2"
             android:windowSoftInputMode="stateHidden" />
         <activity
-            android:name=".settingsActivity"
-            android:parentActivityName=".MainActivity" />
-        <activity android:name=".SearchActivity"
-            android:parentActivityName=".MainActivity" />
+            android:name="max.convives.settingsActivity"
+            android:parentActivityName="max.convives.MainActivity" />
+        <activity android:name="max.convives.SearchActivity"
+            android:parentActivityName="max.convives.MainActivity" />
         <activity
-            android:name=".UserActivity"
-            android:parentActivityName=".ChatActivity" />
+            android:name="max.convives.UserActivity"
+            android:parentActivityName="max.convives.ChatActivity" />
 
         <provider
-            android:name=".mContentProvider"
+            android:name="max.convives.mContentProvider"
             android:authorities="com.example.max.chat_firebase" />
 
-        <activity android:name=".DatabaseGUIActivity" />
-
-        <service android:name=".DatabaseIntentService" />
-        <service android:name=".OfflineJobIntentService" />
-        <service android:name=".WriteToFirebaseJobIntentService" />
-        <service android:name=".MyFirebaseMessagingService">
+        <service android:name="max.convives.DatabaseIntentService" />
+        <service android:name="max.convives.OfflineJobIntentService" />
+        <service android:name="max.convives.WriteToFirebaseJobIntentService" />
+        <service android:name="max.convives.MyFirebaseMessagingService">
             <intent-filter>
                 <action android:name="com.google.firebase.MESSAGING_EVENT" />
             </intent-filter>
         </service>
-        <service android:name=".MyFirebaseInstanceIDService">
+        <service android:name="max.convives.MyFirebaseInstanceIDService">
             <intent-filter>
                 <action android:name="com.google.firebase.INSTANCE_ID_EVENT" />
             </intent-filter>
