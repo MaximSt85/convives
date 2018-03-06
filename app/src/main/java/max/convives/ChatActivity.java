@@ -15,6 +15,7 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.text.format.DateUtils;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -220,6 +221,7 @@ public class ChatActivity extends AppCompatActivity {
                                 newMessages = 0;
                             }
                             newMessages += 1;
+                            //Log.d(TAG, "newMessages" + newMessages);
                             mDatabase.child("users").child(userId1).child("newMessage").child(userId2).setValue(newMessages);
                         }
 

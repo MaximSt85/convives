@@ -2,6 +2,7 @@ package max.convives;
 
 import android.app.Application;
 import android.content.Context;
+import android.support.multidex.MultiDex;
 import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseUser;
@@ -17,6 +18,12 @@ import com.google.firebase.database.ValueEventListener;
  */
 
 public class MApplication extends Application {
+
+    @Override
+    protected void attachBaseContext(Context base) {
+        super.attachBaseContext(base);
+        MultiDex.install(this);
+    }
 
     @Override
     public void onCreate() {
