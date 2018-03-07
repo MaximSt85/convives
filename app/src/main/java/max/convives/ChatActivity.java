@@ -216,7 +216,7 @@ public class ChatActivity extends AppCompatActivity {
                             int newMessages = 0;
                             try {
                                 newMessages = Integer.parseInt(String.valueOf(dataSnapshot.getValue()));
-                                Log.d(TAG, "newMessages" + newMessages);
+                                //Log.d(TAG, "newMessages" + newMessages);
                             }
                             catch (Exception e) {
                                 newMessages = 0;
