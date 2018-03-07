@@ -180,7 +180,7 @@ public class ChatActivity extends AppCompatActivity {
         final DateFormat dateFormat = android.text.format.DateFormat.getDateFormat(getApplicationContext());
 
         fab.setOnClickListener(new View.OnClickListener() {
-            @RequiresApi(api = Build.VERSION_CODES.O)
+            //@RequiresApi(api = Build.VERSION_CODES.O)
             @Override
             public void onClick(View view) {
                 EditText input = (EditText)findViewById(R.id.input1);
@@ -216,6 +216,7 @@ public class ChatActivity extends AppCompatActivity {
                             int newMessages = 0;
                             try {
                                 newMessages = Integer.parseInt(String.valueOf(dataSnapshot.getValue()));
+                                Log.d(TAG, "newMessages" + newMessages);
                             }
                             catch (Exception e) {
                                 newMessages = 0;
@@ -223,6 +224,7 @@ public class ChatActivity extends AppCompatActivity {
                             newMessages += 1;
                             //Log.d(TAG, "newMessages" + newMessages);
                             mDatabase.child("users").child(userId1).child("newMessage").child(userId2).setValue(newMessages);
+                            newMessages = 0;
                         }
 
                         @Override
@@ -302,7 +304,9 @@ public class ChatActivity extends AppCompatActivity {
     protected void onPause() {
         super.onPause();
         //mDatabase.child("chats").child(reference).removeEventListener(myValueEventListener);
-        mDatabase.child("chats").child(reference).removeEventListener(myChildEventListener);
+        if (myChildEventListener != null) {
+            mDatabase.child("chats").child(reference).removeEventListener(myChildEventListener);
+        }
         isChatActivityActive = false;
         OnlineStatus myOnlineStatus = new OnlineStatus(this);
         myOnlineStatus.makeOffline();

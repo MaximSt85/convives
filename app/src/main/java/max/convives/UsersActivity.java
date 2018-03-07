@@ -180,7 +180,13 @@ public class UsersActivity extends AppCompatActivity implements UsersAdapter.Use
                     }
                     if (userDeleted) {continue;}
                     String name = String.valueOf(userDataSnapshot.child("userName").getValue());
-                    int age = Integer.parseInt(String.valueOf(userDataSnapshot.child("userAge").getValue()));
+                    int age;
+                    try {
+                        age = Integer.parseInt(String.valueOf(userDataSnapshot.child("userAge").getValue()));
+                    }
+                    catch (Exception e) {
+                        age = 18;
+                    }
                     boolean sex = Boolean.parseBoolean(String.valueOf(userDataSnapshot.child("userSex").getValue()));
                     double userLatitude = Double.parseDouble(String.valueOf(userDataSnapshot.child("userLatitude").getValue()));
                     double userLongitude = Double.parseDouble(String.valueOf(userDataSnapshot.child("userLongitude").getValue()));
@@ -280,7 +286,9 @@ public class UsersActivity extends AppCompatActivity implements UsersAdapter.Use
             LocationServices.FusedLocationApi.removeLocationUpdates(mGoogleApiClient, this);
             mGoogleApiClient.disconnect();
         }
-        mDatabase.child("users").removeEventListener(myListener);
+        if (myListener != null) {
+            mDatabase.child("users").removeEventListener(myListener);
+        }
         OnlineStatus myOnlineStatus = new OnlineStatus(this);
         myOnlineStatus.makeOffline();
     }

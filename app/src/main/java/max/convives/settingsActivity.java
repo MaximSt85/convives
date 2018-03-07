@@ -61,6 +61,8 @@ public class settingsActivity extends AppCompatActivity implements DatabaseInten
     Switch muteSwitch;
     private boolean preferenceMute;
 
+    int user_age;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -204,7 +206,12 @@ public class settingsActivity extends AppCompatActivity implements DatabaseInten
     }
 
     private void saveData() {
-        final int user_age = Integer.parseInt(age.getText().toString());
+        try {
+            user_age = Integer.parseInt(age.getText().toString());
+        }
+        catch (Exception e) {
+            user_age = 18;
+        }
         final boolean user_sex;
         final String [] args = {currentUserAuth.getUid()};
         if (String.valueOf(sex.getSelectedItem()).equals("Female")) {
