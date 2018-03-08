@@ -1,5 +1,6 @@
 package max.convives;
 
+import android.app.NotificationManager;
 import android.content.Context;
 import android.content.Intent;
 import android.database.Cursor;
@@ -80,6 +81,9 @@ public class ChatActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_chat);
+
+        NotificationManager notificationManager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
+        notificationManager.cancelAll();
 
         Bundle extras = getIntent().getExtras();
         userId1 = extras.getString("USER_ID1");
@@ -179,6 +183,7 @@ public class ChatActivity extends AppCompatActivity {
 
         final DateFormat dateFormat = android.text.format.DateFormat.getDateFormat(getApplicationContext());
 
+        mDatabase.child("users").child(userId1).child("newMessage").child(userId2).keepSynced(true);
         fab.setOnClickListener(new View.OnClickListener() {
             //@RequiresApi(api = Build.VERSION_CODES.O)
             @Override
@@ -213,18 +218,19 @@ public class ChatActivity extends AppCompatActivity {
                     mDatabase.child("users").child(userId1).child("newMessage").child(userId2).addListenerForSingleValueEvent(new ValueEventListener() {
                         @Override
                         public void onDataChange(DataSnapshot dataSnapshot) {
-                            int newMessages = 0;
+                            //Log.d(TAG, "dataSnapshot is : " + dataSnapshot);
+                            int newMessages;
                             try {
                                 newMessages = Integer.parseInt(String.valueOf(dataSnapshot.getValue()));
-                                //Log.d(TAG, "newMessages" + newMessages);
+                                //Log.d(TAG, "in listener, newMessages is: " + newMessages);
                             }
                             catch (Exception e) {
                                 newMessages = 0;
                             }
                             newMessages += 1;
-                            //Log.d(TAG, "newMessages" + newMessages);
                             mDatabase.child("users").child(userId1).child("newMessage").child(userId2).setValue(newMessages);
-                            newMessages = 0;
+                            //newMessages = 0;
+                            //dataSnapshot = null;
                         }
 
                         @Override
@@ -232,6 +238,7 @@ public class ChatActivity extends AppCompatActivity {
 
                         }
                     });
+                    //Log.d(TAG, "newMessages" + newMessages);
                 }
 
                 input.setText("");
@@ -298,6 +305,7 @@ public class ChatActivity extends AppCompatActivity {
         isChatActivityActive = true;
         OnlineStatus myOnlineStatus = new OnlineStatus(this);
         myOnlineStatus.makeOnline();
+        mDatabase.child("users").child(userId2).child("newMessage").child(userId1).removeValue();
     }
 
     @Override
@@ -310,9 +318,10 @@ public class ChatActivity extends AppCompatActivity {
         isChatActivityActive = false;
         OnlineStatus myOnlineStatus = new OnlineStatus(this);
         myOnlineStatus.makeOffline();
+        mDatabase.child("users").child(userId2).child("newMessage").child(userId1).removeValue();
         //mDatabase.child("users").child(userId2).child("newMessage").setValue(0);
         //mDatabase.child("users").child(userId2).child("newMessage").child(userId1).setValue(0);
-        mDatabase.child("users").child(userId2).child("newMessage").child(userId1).removeValue();
+        //mDatabase.child("users").child(userId2).child("newMessage").child(userId1).removeValue();
 
         /*if (WriteToFirebaseJobIntentService.running) {
             WriteToFirebaseJobIntentService.restart = true;

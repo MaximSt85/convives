@@ -25,7 +25,7 @@
         <item>Female</item>
         <item>Male</item>
     </string-array>
-    <string name="mute_notifications">Notifications</string>
+    <string name="mute_notifications">Mute notifications</string>
     <string name="photo">Photo</string>
     <string name="touch_picture">Touch picture for changing it</string>
     <string name="minimum_age">Minimum allowed age is 18</string>
