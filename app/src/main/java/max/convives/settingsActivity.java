@@ -90,9 +90,26 @@ public class settingsActivity extends AppCompatActivity implements DatabaseInten
         mDatabase.child("users").child(currentUserAuth.getUid()).addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
-                mUser = dataSnapshot.getValue(User.class);
+                //mUser = dataSnapshot.getValue(User.class);
                 //name.setText(mUser.getUserName());
-                if (mUser.getUserAge() > 0) {
+                int userAge;
+                boolean userSex;
+                try {
+                    userAge = Integer.parseInt(String.valueOf(dataSnapshot.child("userAge").getValue()));
+                }
+                catch (Exception e) {
+                    userAge = 0;
+                }
+                if (userAge > 0) {
+                    age.setText(String.valueOf(userAge));
+                }
+                try {
+                    userSex = Boolean.parseBoolean(String.valueOf(dataSnapshot.child("userSex").getValue()));
+                }
+                catch (Exception e) {
+                    userSex = true;
+                }
+                /*if (mUser.getUserAge() > 0) {
                     age.setText(String.valueOf(mUser.getUserAge()));
                 }
                 if (mUser.getUserSex()) {
@@ -100,7 +117,7 @@ public class settingsActivity extends AppCompatActivity implements DatabaseInten
                 }
                 else {
                     sex.setSelection(0);
-                }
+                }*/
             }
 
             @Override
