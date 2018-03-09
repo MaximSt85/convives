@@ -187,10 +187,34 @@ public class UsersActivity extends AppCompatActivity implements UsersAdapter.Use
                     catch (Exception e) {
                         age = 18;
                     }
-                    boolean sex = Boolean.parseBoolean(String.valueOf(userDataSnapshot.child("userSex").getValue()));
-                    double userLatitude = Double.parseDouble(String.valueOf(userDataSnapshot.child("userLatitude").getValue()));
-                    double userLongitude = Double.parseDouble(String.valueOf(userDataSnapshot.child("userLongitude").getValue()));
-                    boolean isUserOnline = Boolean.parseBoolean(String.valueOf(userDataSnapshot.child("isUserOnline").getValue()));
+                    boolean sex;
+                    try {
+                        sex = Boolean.parseBoolean(String.valueOf(userDataSnapshot.child("userSex").getValue()));
+                    }
+                    catch (Exception e) {
+                        sex = true;
+                    }
+                    double userLatitude;
+                    try {
+                        userLatitude = Double.parseDouble(String.valueOf(userDataSnapshot.child("userLatitude").getValue()));
+                    }
+                    catch (Exception e) {
+                        userLatitude = 0;
+                    }
+                    double userLongitude;
+                    try {
+                        userLongitude = Double.parseDouble(String.valueOf(userDataSnapshot.child("userLongitude").getValue()));
+                    }
+                    catch (Exception e) {
+                        userLongitude = 0;
+                    }
+                    boolean isUserOnline;
+                    try {
+                        isUserOnline = Boolean.parseBoolean(String.valueOf(userDataSnapshot.child("isUserOnline").getValue()));
+                    }
+                    catch (Exception e) {
+                        isUserOnline = false;
+                    }
                     long lastUserOnline;
                     try {
                         lastUserOnline = Long.parseLong(String.valueOf(userDataSnapshot.child("lastUserOnline").getValue()));
